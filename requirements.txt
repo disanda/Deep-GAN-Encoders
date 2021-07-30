@@ -1,0 +1,27 @@
+#pip install belows:
+
+python==3.7.3
+
+torch>=1.8
+
+torchvision
+
+tensorboardx
+
+lpips
+
+boto3
+
+skimage
+
+matplotlib
+
+scipy
+
+tqdm
+
+requests
+
+
+
+
