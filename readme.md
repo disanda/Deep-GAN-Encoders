@@ -1,17 +1,15 @@
 
 
-# MTV: Multi-Type Vectors for Image Embedding with Latent Representation
+# MTV-TSA: Multi-Type Vectors Joint Two-Scale Attentions for Image Embedding with Latent Representation.
 
 ![Python 3.7.3](https://img.shields.io/badge/python-3.7.3-blue.svg?style=plastic)
 ![PyTorch 1.8.1](https://img.shields.io/badge/pytorch-1.8.1-blue.svg?style=plastic) 
 ![Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-green.svg?style=plastic)
 
-<center class="half"><img src="./images/cxx1.gif" width = "128" height = "128" alt="cxx1"  /><img src="./images/cxx2.gif" width = "128" height = "128" alt="cxx2"  /><img src="./images/msk.gif" width = "128" height = "128" alt="msk" /><img src="./images/dy.gif" width = "128" height = "128" alt="dy" /><img src="./images/zy.gif" width = "128" height = "128" alt="zy" />
-</center>
+  <img src="./images/cxx1.gif" width = "128" height = "128" alt="cxx1"  />  <img src="./images/cxx2.gif" width = "128" height = "128" alt="cxx2"  />  <img src="./images/msk.gif" width = "128" height = "128" alt="msk" />   <img src="./images/dy.gif" width = "128" height = "128" alt="dy" />  <img src="./images/zy.gif" width = "128" height = "128" alt="zy" /> 
 
 
-
->This is the official code release for MTV-TSA: Multi-Type Vectors Joint Two-Scale Attentions for Image Embedding with Latent Representation. The code contains a set of encoders for matching  pre-trained GANs (PGGAN, StyleGANv1, StyleGANv2, BigGAN)  via multi-scale vectors.
+>This is the official code release for MTV-TSA: Multi-Type Vectors Joint Two-Scale Attentions for Image Embedding with Latent Representation. The code contains a set of encoders for matching  pre-trained GANs (PGGAN, StyleGANv1, StyleGANv2, BigGAN)  via multi-scale vectors with two-scale attentions.
 
 
 ##  Usage
