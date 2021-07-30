@@ -6,8 +6,7 @@
 ![PyTorch 1.8.1](https://img.shields.io/badge/pytorch-1.8.1-blue.svg?style=plastic) 
 ![Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-green.svg?style=plastic)
 
-<center class="half">
-<img src="./images/cxx1.gif" width = "128" height = "128" alt="cxx1"  /><img src="./images/cxx2.gif" width = "128" height = "128" alt="cxx2"  /><img src="./images/msk.gif" width = "128" height = "128" alt="msk" /><img src="./images/dy.gif" width = "128" height = "128" alt="dy" /><img src="./images/zy.gif" width = "128" height = "128" alt="zy" />
+<center class="half"><img src="./images/cxx1.gif" width = "128" height = "128" alt="cxx1"  /><img src="./images/cxx2.gif" width = "128" height = "128" alt="cxx2"  /><img src="./images/msk.gif" width = "128" height = "128" alt="msk" /><img src="./images/dy.gif" width = "128" height = "128" alt="dy" /><img src="./images/zy.gif" width = "128" height = "128" alt="zy" />
 </center>
 
 
