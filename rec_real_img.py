@@ -1,4 +1,5 @@
-#reconstructing real_image by dirrectlly MTV E (no optimize)
+#reconstructing real_image by dirrectlly MTV E (no optimize E via StyleGANv1)
+#set arg.realimg_dir for embedding real images to latent vectors
 import os
 import math
 import torch
@@ -66,48 +67,10 @@ if __name__ == "__main__":
 
         E = BE.BE(startf=args.start_features, maxf=512, layer_count=int(math.log(args.img_size,2)-1), latent_size=512, channels=3)
 
-    elif type == 2:  # StyleGAN2, a pth file.
-        #model_path = './checkpoint/stylegan_v2/stylegan2_ffhq1024.pth'
-        generator = model_v2.StyleGAN2Generator(resolution=args.img_size).to(device)
-        checkpoint = torch.load(model_path) #map_location='cpu'
-        if 'generator_smooth' in checkpoint: #default
-            generator.load_state_dict(checkpoint['generator_smooth'])
-        else:
-            generator.load_state_dict(checkpoint['generator'])
-        synthesis_kwargs = dict(trunc_psi=0.7,trunc_layers=8,randomize_noise=False)
-        #Gs = generator.synthesis
-        #Gs.cuda()
-        #Gm = generator.mapping
-        #truncation = generator.truncation
-        const_r = torch.randn(args.batch_size)
-        const1 = generator.synthesis.early_layer(const_r) #[n,512,4,4]
-
-        #E = BE.BE(startf=64, maxf=512, layer_count=int(math.log(args.img_size,2)-1), latent_size=512, channels=3)
-        E = BE.BE(startf=args.start_features, maxf=512, layer_count=int(math.log(args.img_size,2)-1), latent_size=512, channels=3) # layer_count: 7->256 8->512 9->1024
-
-    elif type == 3:  # PGGAN, a pth file.
-        #model_path = './checkpoint/PGGAN/pggan_horse256.pth'
-        generator = model_pggan.PGGANGenerator(resolution=args.img_size).to(device)
-        checkpoint = torch.load(model_path) #map_location='cpu'
-        if 'generator_smooth' in checkpoint: #默认是这个
-            generator.load_state_dict(checkpoint['generator_smooth'])
-        else:
-            generator.load_state_dict(checkpoint['generator'])
-        const1 = torch.tensor(0)
-
-        E = BE_PG.BE(startf=args.start_features, maxf=512, layer_count=int(math.log(args.img_size,2)-1), latent_size=512, channels=3, pggan=True)
-
-    elif type == 4: # BigGAN, 2 files. G.pt and config.json
-        #model_path = './checkpoint/biggan/256/G-256.pt'
-        #config_file = './checkpoint/biggan/256/biggan-deep-256-config.json'
-        config = BigGANConfig.from_json_file(config_file)
-        generator = BigGAN(config)
-        generator.load_state_dict(torch.load(model_path))
-        E = BE_BIG.BE(startf=args.start_features, maxf=512, layer_count=int(math.log(args.img_size,2)-1), latent_size=512, channels=3, biggan=True)
     else:
         print('error')
 
-#Load E
+    #Load E
     E = BE.BE(startf=args.start_features, maxf=512, layer_count=int(math.log(args.img_size,2)-1), latent_size=512, channels=3) .to(device)
     if args.checkpoint_dir_e is not None:
         E.load_state_dict(torch.load(args.checkpoint_dir_e, map_location=torch.device(device)))

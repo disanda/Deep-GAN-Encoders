@@ -1,6 +1,6 @@
 
 
-# MTV-TSA: Multi-Type Vectors Joint Two-Scale Attentions for Image Embedding with Latent Representation.
+# MTV-TSA: Adaptable GAN Encoders for Image Reconstruction via Multi-type Latent Vectors with Two-scale Attentions.
 
 ![Python 3.7.3](https://img.shields.io/badge/python-3.7.3-blue.svg?style=plastic)
 ![PyTorch 1.8.1](https://img.shields.io/badge/pytorch-1.8.1-blue.svg?style=plastic) 
@@ -9,7 +9,9 @@
   <img src="./images/cxx1.gif" width = "128" height = "128" alt="cxx1"  />  <img src="./images/cxx2.gif" width = "128" height = "128" alt="cxx2"  />  <img src="./images/msk.gif" width = "128" height = "128" alt="msk" />   <img src="./images/dy.gif" width = "128" height = "128" alt="dy" />  <img src="./images/zy.gif" width = "128" height = "128" alt="zy" /> 
 
 
->This is the official code release for MTV-TSA: Multi-Type Vectors Joint Two-Scale Attentions for Image Embedding with Latent Representation. The code contains a set of encoders for matching  pre-trained GANs (PGGAN, StyleGANv1, StyleGANv2, BigGAN)  via multi-scale vectors with two-scale attentions.
+>This is the official code release for "Adaptable GAN Encoders for Image Reconstruction via Multi-type Latent Vectors with Two-scale Attentions". 
+
+>Code contains a set of encoders for matching  pre-trained GANs (PGGAN, StyleGANv1, StyleGANv2, BigGAN)  via multi-scale vectors with two-scale attentions.
 
 
 ##  Usage
@@ -18,7 +20,7 @@
 
 > python E_align.py
 
-- training encoder with Gram-based attentions (mis-align image)
+- training encoder with Gram-based attentions (misalign image)
 
 > python E_mis_align.py
 
@@ -28,18 +30,18 @@
 
 - discovering attribute directions with latent space : embedded_img_processing.py
 
-Note: Pre-trained Model should be download first !
+Note: Pre-trained Model should be download first , and default save to './chechpoint/'
 
 ## Metric
 
 - validate performance (Pre-trained GANs and baseline)
 
   1. using generations.py to generate reconstructed images (generate GANs images if needed)
-  2. Files in directory "./baseline/" could help you to quickly format images and latent vectors (w).
-  3. Put  comparing images to different files, and run comparing-baseline.py
+  2. Files in the directory "./baseline/" could help you to quickly format images and latent vectors (w).
+  3. Put comparing images to different files, and run comparing-baseline.py
 
 
-- ablation study : looking from  ./ablations-study/
+- ablation study : look at  ''./ablations-study/''
 
 
 ## Setup
@@ -52,7 +54,7 @@ at './model/E/E.py' (quickly converge for reconstructed GANs' image)
 at './model/E/E_Blur.py'  (margin blur and more GPU memory)
 
 ###   Pre-Trained GANs
-> note: put pre-trained GANs weight file at checkpoint directory
+> note: put pre-trained GANs weight file at ''./checkpoint/' directory
 - StyleGAN_V1 (should contain 3 files: Gm, Gs, center-tensor):
   - Cat 256:
     - ./checkpoint/stylegan_V1/cat/cat256_Gs_dict.pth
@@ -72,11 +74,10 @@ at './model/E/E_Blur.py'  (margin blur and more GPU memory)
     - ./checkpoint/biggan/256/biggan-deep-256-config.json
 
 ###  Options and Setting
-
-> note: different GANs  should choose different pre-trained modle path 
+> note: different GANs  should set different parameters carefully. 
 
 -  choose --mtype for StyleGANv1=1, StyleGANv2=2, PGGAN=3, BIGGAN=4
--  choose Encoder start_features (--z_dim) carefully, the value is 16->1024x1024, 32->512x512, 64->256x256
+-  choose Encoder start_features (--z_dim) carefully, the value are: 16->1024x1024, 32->512x512, 64->256x256
 -  if go on training, set --checkpoint_dir_E which path save pre-trained Encoder model
 -  --checkpoint_dir_GAN is needed, StyleGANv1 is a directory(contains 3 filers: Gm, Gs, center-tensor) , others are file path (.pth or .pt)
 ```python
@@ -98,13 +99,22 @@ at './model/E/E_Blur.py'  (margin blur and more GPU memory)
 
 ## Pre-trained Model
 
-- We offered StyleGANv1-(FFHQ1024,  Cars512, Cats256) models (contain 3 files Gm, Gs, center-tensor), and our corresponding encoer here:
+We offered pre-trainned GANs and their corresponding encoders here: [models](https://drive.google.com/drive/folders/1vqx5Sol04MAbeNLk9h0ouo8MiR3rJI4f?usp=sharing)  (default setting is the case1 ).
 
-- We  offered BigGAN 256 encoder here:
-- We  offered StyleGANv1 FFHQ encoder here (for real-image embedding and process):
-- We  offered Cat256 StyleGANv2 (Grad-Cam based Case1 and Case2) here:
+GANs:
 
-- If needed, we will offer other pre-trained model in future. You can also get pre-trianed GANs model in below  Acknowledgements. (The code could Directly adapt PGGAN, StyleGANv2 and BigGAN-pytorch pre-trained models)
+- StyleGANv1-(FFHQ1024,  Car512, Cat256) models which contain 3 files Gm, Gs and center-tensor.
+- PGGAN and StyleGANv2.  A single .pth file  gets Gm, Gs and center-tensor together.
+-  BigGAN 128x128 ,256x256, and 512x512: each type contain a config file and model (.pt)
+
+Encoders:
+
+- StyleGANv1 FFHQ (case 2) for real-image embedding and process.
+- StyleGANv2 LSUN Cat 256, they are one models from case 1 (Grad-CAM based attentions) and both models from case 2 (Grad-Cam based and Center-aligned Attentions  for ablation study):
+- StyleGANv2 FFHQ (case 1)
+- Biggan-256 (case 1)
+
+If you want to try more GANs, cite more pre-trained GANs below:
 
 
 ##  Acknowledgements
@@ -127,13 +137,10 @@ Ratelted Works:
 > Grad-CAM & Grad-CAM++: https://github.com/yizt/Grad-CAM.pytorch
 > SSIM Index: https://github.com/Po-Hsun-Su/pytorch-ssim
 
-We express our thanks to above authors.
+Our implementation of the proposed method is partly borrowed from the above works. We would like to thank the above authors.
+
 
 ## License
 
-The code of this repository is released under the [Apache 2.0](LICENSE) license.<br>
-The directory `netdissect` is a derivative of the [GAN Dissection][gandissect] project, and is provided under the MIT license.<br>
-The directories `models/biggan` and `models/stylegan2` are provided under the MIT license.
+The code of this repository is released under the [Apache 2.0](LICENSE) license.<br>The directories `models/biggan` and `models/stylegan2` are provided under the MIT license.<br>
 
-
-## BibTeX
