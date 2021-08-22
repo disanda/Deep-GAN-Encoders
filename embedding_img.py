@@ -46,14 +46,14 @@ def train(tensor_writer = None, args = None, imgs_tensor = None):
     Gm.eval()
 
     E = BE.BE(startf=args.start_features, maxf=512, layer_count=int(math.log(args.img_size,2)-1), latent_size=512, channels=3)
-    #E.load_state_dict(torch.load(args.checkpoint_dir_E),strict=False)
+    E.load_state_dict(torch.load(args.checkpoint_dir_E),strict=False)
     #omit RGB layers EAEv2->MSVv2:
-    if args.checkpoint_dir_E != None:
-        E_dict = torch.load(args.checkpoint_dir_E,map_location=torch.device(device))
-        new_state_dict = OrderedDict()
-        for (i1,j1),(i2,j2) in zip (E.state_dict().items(),E_dict.items()):
-                new_state_dict[i1] = j2 
-        E.load_state_dict(new_state_dict)
+    # if args.checkpoint_dir_E != None:
+    #     E_dict = torch.load(args.checkpoint_dir_E,map_location=torch.device(device))
+    #     new_state_dict = OrderedDict()
+    #     for (i1,j1),(i2,j2) in zip (E.state_dict().items(),E_dict.items()):
+    #             new_state_dict[i1] = j2 
+    #     E.load_state_dict(new_state_dict)
 
     E.to(device)
     writer = tensor_writer
@@ -78,7 +78,7 @@ def train(tensor_writer = None, args = None, imgs_tensor = None):
             w1.requires_grad=True
             E_optimizer = LREQAdam([{'params': w1},], lr=args.lr, betas=(args.beta_1, 0.99), weight_decay=0)
         else:
-            E.load_state_dict(new_state_dict) # if not this reload, the max num of optimizing images is about 5-6.
+            E.load_state_dict(torch.load(args.checkpoint_dir_E)) # if not this reload, the max num of optimizing images is about 5-6.
             E_optimizer.state = collections.defaultdict(dict) # Fresh the optimizer state. E_optimizer = LREQAdam([{'params': E.parameters()},], lr=args.lr, betas=(args.beta_1, 0.99), weight_decay=0) 
         for iteration in range(0,args.iterations):
             if args.optimizeE == True:
@@ -178,7 +178,7 @@ if __name__ == "__main__":
     parser.add_argument('--experiment_dir', default='./result/StyleGAN1-FFHQ1024-Aligned-realImgEmbedding') #None
     parser.add_argument('--checkpoint_dir_GAN', default='./checkpoint/stylegan_v1/ffhq1024/') #None  ./checkpoint/stylegan_v1/ffhq1024/ or ./checkpoint/stylegan_v2/stylegan2_ffhq1024.pth
     parser.add_argument('--config_dir', default=None) # BigGAN needs it
-    parser.add_argument('--checkpoint_dir_E', default='./checkpoint/E/E_styleganv1.pth')
+    parser.add_argument('--checkpoint_dir_E', default='./checkpoint/E/E_blur(case2)_styleganv1_FFHQ_state_dict.pth')
     parser.add_argument('--img_dir', default='./checkpoint/realimg_file/') # pt or directory
     parser.add_argument('--img_size',type=int, default=1024)
     parser.add_argument('--img_channels', type=int, default=3)# RGB:3 ,L:1

@@ -11,7 +11,7 @@
 
 >This is the official code release for "Adaptable GAN Encoders for Image Reconstruction via Multi-type Latent Vectors with Two-scale Attentions". 
 
->Code contains a set of encoders for matching  pre-trained GANs (PGGAN, StyleGANv1, StyleGANv2, BigGAN)  via multi-scale vectors with two-scale attentions.
+>The code contains a set of encoders that match pre-trained GANs (PGGAN, StyleGANv1, StyleGANv2, BigGAN)  via multi-scale vectors with two-scale attentions.
 
 
 ##  Usage
@@ -24,7 +24,13 @@
 
 > python E_mis_align.py
 
-- embedding real image to latent space (using StyleGANv1 and w)
+- embedding real images to latent space (using StyleGANv1 and w).  
+
+  a. You can put real images at './checkpoint/realimg_file/' (default file as args.img_dir)
+
+  b. You should load pre-trained Encoder at './checkpoint/E/E_blur(case2)_styleganv1_FFHQ_state_dict.pth'
+
+  c. Then run:
 
 > python embedding_img.py
 
@@ -139,8 +145,13 @@ Ratelted Works:
 
 Our method implementation partly borrow from the above works. We would like to thank those authors.
 
+### If you have any questions, please contact us by E-mail ( disanda@outlook.com). Pull request or any comment is also welcome.
 
 ## License
 
 The code of this repository is released under the [Apache 2.0](LICENSE) license.<br>The directories `models/biggan` and `models/stylegan2` are provided under the MIT license.<br>
+
+## 简体中文: 
+
+如何应用于[编辑人脸](./readme_cn.md)
 
