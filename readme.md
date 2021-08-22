@@ -137,7 +137,7 @@ Ratelted Works:
 > Grad-CAM & Grad-CAM++: https://github.com/yizt/Grad-CAM.pytorch
 > SSIM Index: https://github.com/Po-Hsun-Su/pytorch-ssim
 
-Our implementation of the proposed method is partly borrowed from the above works. We would like to thank the above authors.
+Our method implementation partly borrow from the above works. We would like to thank those authors.
 
 
 ## License
