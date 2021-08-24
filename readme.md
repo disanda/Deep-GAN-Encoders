@@ -138,18 +138,29 @@ Comparing Works:
 > pSp: https://github.com/eladrich/pixel2style2pixel
 > ALAE: https://github.com/podgorskiy/ALAE.git
 
-Ratelted Works:
+Related Works:
 
 > Grad-CAM & Grad-CAM++: https://github.com/yizt/Grad-CAM.pytorch
 > SSIM Index: https://github.com/Po-Hsun-Su/pytorch-ssim
 
-Our method implementation partly borrow from the above works. We would like to thank those authors.
+### Our method implementation partly borrow from the above works (ALAE and Related Works). We would like to thank those authors.
 
 ### If you have any questions, please contact us by E-mail ( disanda@outlook.com). Pull request or any comment is also welcome.
 
 ## License
 
 The code of this repository is released under the [Apache 2.0](LICENSE) license.<br>The directories `models/biggan` and `models/stylegan2` are provided under the MIT license.<br>
+
+## Cite
+
+@misc{yu2021adaptable,
+      title={Adaptable GAN Encoders for Image Reconstruction via Multi-type Latent Vectors with Two-scale Attentions}, 
+      author={Cheng Yu and Wenmin Wang},
+      year={2021},
+      eprint={2108.10201},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
 
 ## 简体中文: 
 
