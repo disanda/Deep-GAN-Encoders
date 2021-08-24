@@ -53,7 +53,7 @@ c.这里提供Encoder预训练模型 [Model](https://pan.baidu.com/s/1F9Tv5ph9Re
 
 https://github.com/disanda/MTV-TSA
 
-如果觉得对你有所帮助，欢迎点赞，反馈。或给项目Star/fork， 想改进代码也欢迎 Pull Request.
+如果你有疑问和建议，欢迎反馈。 另外想改进代码也欢迎 Pull Request.
 
 
 

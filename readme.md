@@ -153,6 +153,7 @@ The code of this repository is released under the [Apache 2.0](LICENSE) license.
 
 ## Cite
 
+```latex
 @misc{yu2021adaptable,
       title={Adaptable GAN Encoders for Image Reconstruction via Multi-type Latent Vectors with Two-scale Attentions}, 
       author={Cheng Yu and Wenmin Wang},
@@ -161,6 +162,7 @@ The code of this repository is released under the [Apache 2.0](LICENSE) license.
       archivePrefix={arXiv},
       primaryClass={cs.CV}
 }
+```
 
 ## 简体中文: 
 
