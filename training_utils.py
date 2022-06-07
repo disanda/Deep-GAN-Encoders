@@ -49,6 +49,7 @@ def set_seed(seed): #随机数设置
     torch.manual_seed(seed) # cpu
     torch.cuda.manual_seed_all(seed)  # gpu
     torch.backends.cudnn.deterministic = True
+    #torch.backends.cudnn.benchmark = False
 
 def space_loss(imgs1,imgs2,image_space=True,lpips_model=None):
     loss_mse = torch.nn.MSELoss()

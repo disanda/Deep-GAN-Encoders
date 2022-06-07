@@ -1,6 +1,6 @@
 
 
-# MTV-TSA: Adaptable GAN Encoders for Image Reconstruction via Multi-type Latent Vectors with Two-scale Attentions.
+# DSE: Diverse Similarity Encoder for Deep GAN Inversion
 
 ![Python 3.7.3](https://img.shields.io/badge/python-3.7.3-blue.svg?style=plastic)
 ![PyTorch 1.8.1](https://img.shields.io/badge/pytorch-1.8.1-blue.svg?style=plastic) 
@@ -8,29 +8,34 @@
 
   <img src="./images/cxx1.gif" width = "128" height = "128" alt="cxx1"  />  <img src="./images/cxx2.gif" width = "128" height = "128" alt="cxx2"  />  <img src="./images/msk.gif" width = "128" height = "128" alt="msk" />   <img src="./images/dy.gif" width = "128" height = "128" alt="dy" />  <img src="./images/zy.gif" width = "128" height = "128" alt="zy" /> 
 
+Tips: we have upgraded the code to enhance the inversion performance and also revised the paper for easy to follow. -- 6.6.2022
 
->This is the official code release for "Adaptable GAN Encoders for Image Reconstruction via Multi-type Latent Vectors with Two-scale Attentions". 
+>This is the official code release for "Diverse Similarity Encoder for Deep GAN Inversion". 
 
->The code contains a set of encoders that match pre-trained GANs (PGGAN, StyleGANv1, StyleGANv2, BigGAN)  via multi-scale vectors with two-scale attentions.
+>The code contains a set of encoders that match pre-trained GANs (PGGAN, StyleGANv1, StyleGANv2, BigGAN).
 
 
 ##  Usage
 
-- training encoder with center attentions (align image)
+
+- training encoder with center attentions (scale for align images)
 
 > python E_align.py
 
-- training encoder with Gram-based attentions (misalign image)
+- training encoder with Grad-CAM-based attentions  (scale for misalign images)
 
 > python E_mis_align.py
 
+
 - embedding real images to latent space (using StyleGANv1 and w).  
 
+```
   a. You can put real images at './checkpoint/realimg_file/' (default file as args.img_dir)
 
   b. You should load pre-trained Encoder at './checkpoint/E/E_blur(case2)_styleganv1_FFHQ_state_dict.pth'
 
   c. Then run:
+```
 
 > python embedding_img.py
 
@@ -151,6 +156,10 @@ Related Works:
 
 The code of this repository is released under the [Apache 2.0](LICENSE) license.<br>The directories `models/biggan` and `models/stylegan2` are provided under the MIT license.<br>
 
+## 简体中文: 
+
+如何应用于[编辑人脸](./readme_cn.md)
+
 ## Cite
 
 ```latex
@@ -164,7 +173,4 @@ The code of this repository is released under the [Apache 2.0](LICENSE) license.
 }
 ```
 
-## 简体中文: 
-
-如何应用于[编辑人脸](./readme_cn.md)
 
