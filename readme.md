@@ -160,8 +160,9 @@ The code of this repository is released under the [Apache 2.0](LICENSE) license.
 
 如何应用于[编辑人脸](./readme_cn.md)
 
-## Cite
 
+<!--
+## Cite
 ```latex
 @misc{yu2021adaptable,
       title={Adaptable GAN Encoders for Image Reconstruction via Multi-type Latent Vectors with Two-scale Attentions}, 
@@ -172,5 +173,5 @@ The code of this repository is released under the [Apache 2.0](LICENSE) license.
       primaryClass={cs.CV}
 }
 ```
-
+-->
 
