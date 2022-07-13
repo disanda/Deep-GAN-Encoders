@@ -1,5 +1,3 @@
-
-
 # DSE: Diverse Similarity Encoder for Deep GAN Inversion
 
 ![Python 3.7.3](https://img.shields.io/badge/python-3.7.3-blue.svg?style=plastic)
@@ -12,7 +10,7 @@ Tips: we have upgraded the code to enhance the inversion performance and also re
 
 >This is the official code release for "Diverse Similarity Encoder for Deep GAN Inversion". 
 
->The code contains a set of encoders that match pre-trained GANs (PGGAN, StyleGANv1, StyleGANv2, BigGAN).
+>The code contains a set of encoders that match pre-trained GANs (PGGAN, StyleGAN1, StyleGAN2, BigGAN). BTW, DSE can match other GANs in the same way.
 
 
 ##  Usage
@@ -62,7 +60,7 @@ Note: Pre-trained Model should be download first , and default save to './chechp
 - Case 1: Training most pre-trained GANs with encoders. 
 at './model/E/E.py' (quickly converge for reconstructed GANs' image)
 - Case 2: Training StyleGANv1 on FFHQ for ablation study and real face image process
-at './model/E/E_Blur.py'  (margin blur and more GPU memory)
+at './model/E/E_Blur.py'  (margin blur and more GPU memory for pixels gradients)
 
 ###   Pre-Trained GANs
 > note: put pre-trained GANs weight file at ''./checkpoint/' directory
@@ -105,7 +103,7 @@ at './model/E/E_Blur.py'  (margin blur and more GPU memory)
     parser.add_argument('--img_channels', type=int, default=3)# RGB:3 ,L:1
     parser.add_argument('--z_dim', type=int, default=512) # PGGAN , StyleGANs are 512. BIGGAN is 128
     parser.add_argument('--mtype', type=int, default=2) # StyleGANv1=1, StyleGANv2=2, PGGAN=3, BigGAN=4
-    parser.add_argument('--start_features', type=int, default=16)  # 16->1024 32->512 64->256
+    parser.add_argument('--start_features', type=int, default=16)  # 16->1024x1024, 32->512x512, 64->256x256, 128->128x128
 ```
 
 ## Pre-trained Model
@@ -116,7 +114,7 @@ GANs:
 
 - StyleGANv1-(FFHQ1024,  Car512, Cat256) models which contain 3 files Gm, Gs and center-tensor.
 - PGGAN and StyleGANv2.  A single .pth file  gets Gm, Gs and center-tensor together.
--  BigGAN 128x128 ,256x256, and 512x512: each type contain a config file and model (.pt)
+- BigGAN 128x128 ,256x256, and 512x512: each type contain a config file and model (.pt)
 
 Encoders:
 
@@ -150,7 +148,23 @@ Related Works:
 
 ### Our method implementation partly borrow from the above works (ALAE and Related Works). We would like to thank those authors.
 
-### If you have any questions, please contact us by E-mail ( disanda@outlook.com). Pull request or any comment is also welcome.
+
+## Cite
+
+If the work helps your research, please consider citing our work here:
+
+```latex
+@article{DSE,
+  author    = {Cheng Yu and Wenmin Wang},
+  title     = {Adaptable {GAN} Encoders for Image Reconstruction via Multi-type Latent
+               Vectors with Two-scale Attentions},
+  journal   = {CoRR},
+  volume    = {abs/2108.10201},
+  year      = {2021},
+  eprinttype = {arXiv},
+  eprint    = {2108.10201},
+}
+```
 
 ## License
 

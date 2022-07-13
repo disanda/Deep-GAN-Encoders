@@ -180,25 +180,25 @@ def train(tensor_writer = None, args = None):
 # If using Case 2, chaning Encoder to E_Blur and remoing below loss-vectors' detach()&clone(), also upgrading different vectors separately (see ablation study)
 
 #loss Images
-        loss_imgs, loss_imgs_info = space_loss(imgs1.detach().clone(),imgs2.detach().clone(),lpips_model=loss_lpips)
+        loss_imgs, loss_imgs_info = space_loss(imgs1,imgs2,lpips_model=loss_lpips)
 
 #loss AT1
-        imgs_medium_1 = imgs1[:,:,:,imgs1.shape[3]//8:-imgs1.shape[3]//8].detach().clone()
-        imgs_medium_2 = imgs2[:,:,:,imgs2.shape[3]//8:-imgs2.shape[3]//8].detach().clone()
+        imgs_medium_1 = imgs1[:,:,:,imgs1.shape[3]//8:-imgs1.shape[3]//8]#.detach().clone()
+        imgs_medium_2 = imgs2[:,:,:,imgs2.shape[3]//8:-imgs2.shape[3]//8]#.detach().clone()
         loss_medium, loss_medium_info = space_loss(imgs_medium_1,imgs_medium_2,lpips_model=loss_lpips)
 
 #loss AT2
         imgs_small_1 = imgs1[:,:,\
         imgs1.shape[2]//8+imgs1.shape[2]//32:-imgs1.shape[2]//8-imgs1.shape[2]//32,\
-        imgs1.shape[3]//8+imgs1.shape[3]//32:-imgs1.shape[3]//8-imgs1.shape[3]//32].detach().clone()
+        imgs1.shape[3]//8+imgs1.shape[3]//32:-imgs1.shape[3]//8-imgs1.shape[3]//32]#.detach().clone()
 
         imgs_small_2 = imgs2[:,:,\
         imgs2.shape[2]//8+imgs2.shape[2]//32:-imgs2.shape[2]//8-imgs2.shape[2]//32,\
-        imgs2.shape[3]//8+imgs2.shape[3]//32:-imgs2.shape[3]//8-imgs2.shape[3]//32].detach().clone()
+        imgs2.shape[3]//8+imgs2.shape[3]//32:-imgs2.shape[3]//8-imgs2.shape[3]//32]#.detach().clone()
 
         loss_small, loss_small_info = space_loss(imgs_small_1,imgs_small_2,lpips_model=loss_lpips)
 
-        loss_tsa = loss_imgs + loss_medium + loss_small
+        loss_tsa = loss_imgs + loss_medium*5 + loss_small*9
         E_optimizer.zero_grad()
         loss_tsa.backward(retain_graph=True)
         E_optimizer.step()
@@ -209,9 +209,11 @@ def train(tensor_writer = None, args = None):
         loss_w, loss_w_info = space_loss(w1,w2,image_space = False)
 
 ## c
-        loss_c, loss_c_info = space_loss(const1,const2,image_space = False)
+        const3 = const1.detach().clone()
+        #const3, _ = E(imgs2)
+        loss_c, loss_c_info = space_loss(const3,const2,image_space = False)
 
-        loss_mtv = (loss_w + loss_c)*0.01
+        loss_mtv = loss_w*0.01 # + loss_c*0.01
         E_optimizer.zero_grad()
         loss_mtv.backward()
         E_optimizer.step()
@@ -309,14 +311,14 @@ if __name__ == "__main__":
     parser.add_argument('--img_size',type=int, default=1024)
     parser.add_argument('--img_channels', type=int, default=3)# RGB:3 ,L:1
     parser.add_argument('--z_dim', type=int, default=512) # PGGAN , StyleGANs are 512. BIGGAN is 128
-    parser.add_argument('--mtype', type=int, default=2) # StyleGANv1=1, StyleGANv2=2, PGGAN=3, BigGAN=4
+    parser.add_argument('--mtype', type=int, default=1) # StyleGANv1=1, StyleGANv2=2, PGGAN=3, BigGAN=4
     parser.add_argument('--start_features', type=int, default=16)  # 16->1024 32->512 64->256
     args = parser.parse_args()
 
     if not os.path.exists('./result'): os.mkdir('./result')
     resultPath = args.experiment_dir
     if resultPath == None:
-        resultPath = "./result/StyleGAN2-FFHQ1024-Aligned-ImgAT1AT2(1:1:1)"
+        resultPath = "./result/StyleGAN2-FFHQ1024-Aligned-ImgAT1AT2"
         if not os.path.exists(resultPath): os.mkdir(resultPath)
 
     resultPath1_1 = resultPath+"/imgs"

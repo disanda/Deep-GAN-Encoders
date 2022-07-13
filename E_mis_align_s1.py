@@ -198,7 +198,7 @@ def train(tensor_writer = None, args = None):
     ##--W
         loss_w, loss_w_info = space_loss(w1,w2,image_space = False)
 
-        loss_mtv = (loss_c + loss_w)*0.01
+        loss_mtv =  loss_w*0.01 #+ loss_c*0.01
         E_optimizer.zero_grad()
         loss_mtv.backward()
         E_optimizer.step()
