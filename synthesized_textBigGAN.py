@@ -116,7 +116,7 @@ def train(tensor_writer = None, args = None):
         elif type == 4:
             z = truncated_noise_sample(truncation=0.4, batch_size=batch_size, seed=iteration%30000)
             #label = np.random.randint(1000,size=batch_size) # 生成标签
-            flag = np.array(30)
+            flag = np.array(726)
             print(flag)
             label = np.ones(batch_size)
             label = flag * label
@@ -148,7 +148,7 @@ def train(tensor_writer = None, args = None):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='the training args')
-    parser.add_argument('--iterations', type=int, default=5)
+    parser.add_argument('--iterations', type=int, default=3)
     parser.add_argument('--seed', type=int, default=30001) # training seeds: 0-30000; validated seeds > 30000
     parser.add_argument('--lr', type=float, default=0.0015)
     parser.add_argument('--beta_1', type=float, default=0.0)

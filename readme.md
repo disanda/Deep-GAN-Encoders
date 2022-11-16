@@ -1,4 +1,4 @@
-# DSE: Diverse Similarity Encoder for Deep GAN Inversion
+# DSE: Diverse Adaptive Encoder for Deep GAN Inversion
 
 ![Python 3.7.3](https://img.shields.io/badge/python-3.7.3-blue.svg?style=plastic)
 ![PyTorch 1.8.1](https://img.shields.io/badge/pytorch-1.8.1-blue.svg?style=plastic) 
@@ -6,9 +6,16 @@
 
   <img src="./images/cxx1.gif" width = "128" height = "128" alt="cxx1"  />  <img src="./images/cxx2.gif" width = "128" height = "128" alt="cxx2"  />  <img src="./images/msk.gif" width = "128" height = "128" alt="msk" />   <img src="./images/dy.gif" width = "128" height = "128" alt="dy" />  <img src="./images/zy.gif" width = "128" height = "128" alt="zy" /> 
 
-Tips: we have upgraded the code to enhance the inversion performance and also revised the paper for easy to follow. -- 6.6.2022
+```
+Tips: 
 
->This is the official code release for "Diverse Similarity Encoder for Deep GAN Inversion". 
+- we revised the paper and add BigGAN inversion (real condition-based images) -- 10.24.2022/ 11.16.2022 (v2)
+
+- we have upgraded the code to enhance the inversion performance and also revised the paper for easy to follow. -- 6.6.2022 (v1)
+
+```
+
+>This is the official code release for "Diverse Adaptive Encoder for Deep GAN Inversion". 
 
 >The code contains a set of encoders that match pre-trained GANs (PGGAN, StyleGAN1, StyleGAN2, BigGAN). BTW, DSE can match other GANs in the same way.
 
@@ -146,25 +153,8 @@ Related Works:
 > Grad-CAM & Grad-CAM++: https://github.com/yizt/Grad-CAM.pytorch
 > SSIM Index: https://github.com/Po-Hsun-Su/pytorch-ssim
 
-### Our method implementation partly borrow from the above works (ALAE and Related Works). We would like to thank those authors.
+Our method implementation partly borrow from the above works (ALAE and Related Works). We would like to thank those authors.
 
-
-## Cite
-
-If the work helps your research, please consider citing our work here:
-
-```latex
-@article{DSE,
-  author    = {Cheng Yu and Wenmin Wang},
-  title     = {Adaptable {GAN} Encoders for Image Reconstruction via Multi-type Latent
-               Vectors with Two-scale Attentions},
-  journal   = {CoRR},
-  volume    = {abs/2108.10201},
-  year      = {2021},
-  eprinttype = {arXiv},
-  eprint    = {2108.10201},
-}
-```
 
 ## License
 
@@ -176,6 +166,10 @@ The code of this repository is released under the [Apache 2.0](LICENSE) license.
 
 
 <!--
+## Cite
+
+If the work helps your research, please consider citing our work here:
+
 ## Cite
 ```latex
 @misc{yu2021adaptable,
