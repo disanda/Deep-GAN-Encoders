@@ -1,4 +1,4 @@
-# The file optimize E for embedding real-img to latent space and getting Wy.
+# The file optimize E for inversion real-img to latent space  (getting Wy).
 # Please refer to 186 below to set args.
 # Code-line: 205-206 for first step regularization parameters:  /beta and Norm_p
 

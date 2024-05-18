@@ -94,6 +94,6 @@ def space_loss(imgs1,imgs2,image_space=True,lpips_model=None):
     else:
         loss_imgs_lpips = torch.tensor(0)
 
-    loss_imgs = 5*loss_imgs_mse + loss_imgs_kl + 3*loss_imgs_cosine + loss_imgs_ssim + 2*loss_imgs_lpips
+    loss_imgs = 5*loss_imgs_mse + 3*loss_imgs_cosine + loss_imgs_ssim + 2*loss_imgs_lpips # loss_imgs_kl
     loss_info = [[loss_imgs_mse_1.item(),loss_imgs_mse_2.item(),loss_imgs_mse_3.item()], loss_imgs_kl.item(), loss_imgs_cosine.item(), loss_imgs_ssim.item(), loss_imgs_lpips.item()]
     return loss_imgs, loss_info

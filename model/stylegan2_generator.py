@@ -1,6 +1,5 @@
 # python3.7
 """Contains the implementation of generator described in StyleGAN2.
-
 Compared to that of StyleGAN, the generator in StyleGAN2 mainly introduces style
 demodulation, adds skip connections, increases model size, and disables
 progressive growth. This script ONLY supports config F in the original paper.

@@ -6,6 +6,7 @@ employs the domain-guided encoder to produce a initial point in the latent
 space and then performs domain-regularized optimization to refine the latent
 code.
 """
+
 # invert.py
 # python test-baseline-indomainG.py 'styleganinv_ffhq256' './styleganv1-generations-512/'
 import os

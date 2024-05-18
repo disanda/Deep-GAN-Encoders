@@ -1,4 +1,5 @@
 # coding: utf-8
+
 """ BigGAN PyTorch model.
     From "Large Scale GAN Training for High Fidelity Natural Image Synthesis"
     By Andrew Brocky, Jeff Donahuey and Karen Simonyan.

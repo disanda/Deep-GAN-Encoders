@@ -8,6 +8,7 @@ import model.utils.lreq as ln
 from model.utils.net import Blur,FromRGB,downscale2d
 from torch.nn import functional as F
 
+
 # G 改 E, 实际上需要用G Block改出E block, 完成逆序对称，在同样位置还原style潜码
 # 比第0版多了残差, 每一层的两个(conv/line)输出的w1和w2合并为1个w
 # 比第1版加了要学习的bias_1和bias_2，网络顺序和第1版有所不同(更对称)

@@ -31,9 +31,10 @@ c.avg_tensor, 这个是一个训练好的常向量，用于模型的首次输入
 > python embedding_img.py
 
 a.这个文件加载Encoder预训练模型
-(默认路径为./checkpoint/E/E_blur(case2)_styleganv1_FFHQ_state_dict.pth)
+> 默认路径为./checkpoint/E/E_blur(case2)_styleganv1_FFHQ_state_dict.pth
 
-b.并编码真实图像(默认路径为 ./checkpoint/realimg_file/)编码到w (默认路径为 ./result/models/)
+b.并编码真实图像
+>默认路径为 ./checkpoint/realimg_file/)编码到w (默认路径为 ./result/models/
 
 c.这里提供Encoder预训练模型 [Model](https://pan.baidu.com/s/1F9Tv5ph9Rejp5JTQK2HSYQ 
 ) , 提取码: swtl
@@ -47,13 +48,7 @@ c.这里提供Encoder预训练模型 [Model](https://pan.baidu.com/s/1F9Tv5ph9Re
 如果想要探索其他人脸属性，也很多方法，最简单有监督方法可以参考: https://github.com/Puzer/stylegan-encoder (里面也附带人脸对齐)
 
 
-## 4. 其他
 
-如果想将我们的编码器用到StyleGANv2, BigGAN, PGGAN等，可以参考我们的代码：
-
-https://github.com/disanda/MTV-TSA
-
-如果你有疑问和建议，欢迎反馈。 另外想改进代码也欢迎 Pull Request.
 
 
 

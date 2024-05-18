@@ -1,4 +1,4 @@
-# make styleganv1 and BigGAN synthesized images for validation. seeds should different to training seeds (0,30000)
+# make styleganv1 and BigGAN synthesized images for validation. seeds should be different seeds (0,30000)
 
 import os
 import math

@@ -1,6 +1,7 @@
 # The file optimize E for embedding real-img to latent space W.
 # You should set img_dir in args. Support img-file or img-tensor (W) dirrectlly
 # one interation just optimize one img, you can run the file on multiple command-line.
+
 import os
 import math
 import torch

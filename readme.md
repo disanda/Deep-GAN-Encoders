@@ -1,4 +1,4 @@
-# DSE: Diverse Adaptive Encoder for Deep GAN Inversion
+# Improving generative adversarial network inversion via fine-tuning GAN encoders
 
 ![Python 3.7.3](https://img.shields.io/badge/python-3.7.3-blue.svg?style=plastic)
 ![PyTorch 1.8.1](https://img.shields.io/badge/pytorch-1.8.1-blue.svg?style=plastic) 
@@ -6,18 +6,11 @@
 
   <img src="./images/cxx1.gif" width = "128" height = "128" alt="cxx1"  />  <img src="./images/cxx2.gif" width = "128" height = "128" alt="cxx2"  />  <img src="./images/msk.gif" width = "128" height = "128" alt="msk" />   <img src="./images/dy.gif" width = "128" height = "128" alt="dy" />  <img src="./images/zy.gif" width = "128" height = "128" alt="zy" /> 
 
-```
-Tips: 
 
-- we revised the paper and add BigGAN inversion (real condition-based images) -- 10.24.2022/ 11.16.2022 (v2)
+>This is the official code for "Improving generative adversarial network inversion via
+fine-tuning GAN encoders". 
 
-- we have upgraded the code to enhance the inversion performance and also revised the paper for easy to follow. -- 6.6.2022 (v1)
-
-```
-
->This is the official code release for "Diverse Adaptive Encoder for Deep GAN Inversion". 
-
->The code contains a set of encoders that match pre-trained GANs (PGGAN, StyleGAN1, StyleGAN2, BigGAN). BTW, DSE can match other GANs in the same way.
+>The code contains a set of encoders that match pre-trained GANs (PGGAN, StyleGAN1, StyleGAN2, BigGAN). BTW, The project can match other GANs in the same way.
 
 
 ##  Usage
@@ -144,9 +137,11 @@ Pre-trained GANs:
 
 Comparing Works:
 
+> E2Style: https://github.com/wty-ustc/e2style
 > In-Domain GAN: https://github.com/genforce/idinvert_pytorch
 > pSp: https://github.com/eladrich/pixel2style2pixel
 > ALAE: https://github.com/podgorskiy/ALAE.git
+
 
 Related Works:
 
@@ -165,21 +160,4 @@ The code of this repository is released under the [Apache 2.0](LICENSE) license.
 如何应用于[编辑人脸](./readme_cn.md)
 
 
-<!--
-## Cite
-
-If the work helps your research, please consider citing our work here:
-
-## Cite
-```latex
-@misc{yu2021adaptable,
-      title={Adaptable GAN Encoders for Image Reconstruction via Multi-type Latent Vectors with Two-scale Attentions}, 
-      author={Cheng Yu and Wenmin Wang},
-      year={2021},
-      eprint={2108.10201},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
-}
-```
--->
 

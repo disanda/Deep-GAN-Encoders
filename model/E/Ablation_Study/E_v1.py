@@ -7,6 +7,7 @@
 # 改变了了residual,和残差网络一致，另外旁路多了conv1处理通道和In学习参数
 # 经测试，不带Eq(Equalize Learning Rate)的参数层学习效果不好
 
+
 import torch
 import torch.nn as nn 
 from torch.nn import init

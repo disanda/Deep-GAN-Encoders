@@ -7,6 +7,7 @@
 # 改变了了residual,和残差网络一致，另外旁路多了conv1处理通道和In学习参数
 # 经测试，不带Eq(Equalize Learning Rate)的参数层学习效果不好
 
+
 #这一版兼容PGGAN和BIGGAN: 主要改变最后一层，增加FC
 #PGGAN: 加一个fc, 和原D类似
 #BIGGAN,加两个fc，各128channel，其中一个是标签，完成128->1000的映射

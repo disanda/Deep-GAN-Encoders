@@ -1,4 +1,5 @@
-# infer Encoder via pre-trained models, before use this code, set args from line 171 carefully (parameters for model type, path, image size and so on).
+# infer Encoder via pre-trained models, before use this code, set args from line 171 carefully 
+# E.g., parameters for model type, path, image size and so on.
 import os
 import math
 import torch
